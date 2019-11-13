@@ -11,9 +11,28 @@
           <li class="nav-item">
             <a class="nav-link" href="<%= help_path %>">Help</a>
           </li>
+          <% if logged_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Users</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href='<%= link_to "Profile", current_user %>'>Profile</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a  href='<%= logout_path %>' data-method="delete" rel="nofollow" class="dropdown-item">Log out</a>
+              </div>
+           </li>
+            
+        <% else %>
           <li class="nav-item">
-            <a class="nav-link" href="#">Log in</a>
+            <a class="nav-link" href="<%= login_path %>">Log in</a>
           </li>
+        <% end %>
+          
         </ul>
       </div>
     </nav>
